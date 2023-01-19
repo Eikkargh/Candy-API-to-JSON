@@ -1,6 +1,6 @@
 # Candy-API-to-JSON
 
-This python script is designed to communicate with Candy/Hoover washer dryers to produce a JSON readable by Home Assistant.<br>
+This python script is designed to communicate with Candy/Hoover washer dryers to produce a JSON readable by Home Assistant.<br><br>
 Tested and working on:
 <ul>
   <li>Hoover WDWOA596H WIFI Washer Dryer</li>
