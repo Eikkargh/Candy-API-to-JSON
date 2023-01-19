@@ -3,8 +3,8 @@ import requests
 import json
 import time
 
-url = 'http://192.168.1.24/http-read.json?encrypted=1'
-key = 'fhaihbiklhjdlmga'
+url = 'http://<DEVICE_IP>/http-read.json?encrypted=1'
+key = '<KEY>'
 request_timeout = 10
 tries = 0
 retries = 5
