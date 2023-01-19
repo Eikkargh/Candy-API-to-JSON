@@ -14,7 +14,7 @@ For most reliable responses, getting the key should be done while the machine is
   <li>Feed the coded.txt into xorknown.py using:<br>
       <code>./xorknown.py ./coded.txt '{"statusLavatric' 16</code></li>
   <br>
-  <li>the output should now contain a key of length 16 and a JSON like the bellow example:<br>
+  <li>the output should now contain a key of length 16 and a JSON. See the bellow example:<br>
       <pre><code>Plaintext: {
         "statusLavatrice":{
                 "WiFiStatus":"0",
@@ -43,5 +43,31 @@ For most reliable responses, getting the key should be done while the machine is
   }</code></pre></li>
   <br>
   <li>If you dont not have a full key at this stage repeat step 3 using another JSON key value like 'WiFiStatus' until each character of the key is known.</li>
-  <br>Add your KEY and DEVICE_IP to candy.py 
+  <br>
+  <li>Add your KEY and DEVICE_IP to candy.py and place in your Home Assistant config/pyscripts.</li>
 </ol>
+<br><br>
+<h2>Configuring Home Assistant</h2>
+candy.py gets the data, decodes it and strips down the the JSON to meet Home Assistants 255 character limit on sensors.<br>
+To set up in Home Assistant you can use the template:<br>
+<pre><code>
+- platform: command_line
+    name: 'Candy Washer Dryer'
+    scan_interval: 60
+    command_timeout: 30
+    command: python3 ./pyscript/candy.py
+    value_template: '{{ value_json }}'
+    json_attributes:
+      - WiFiStatus
+      - Err
+      - MachMd
+      - Pr
+      - PrPh
+      - Temp
+      - SpinSp
+      - RemTime
+      - DryT
+      - DelVal
+      - TotalTime
+</pre></code>
+example templates including translations of machine program codes can be found in configuration.yaml.
