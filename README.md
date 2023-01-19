@@ -15,7 +15,7 @@ For most reliable responses, getting the key should be done while the machine is
       <code>./xorknown.py ./coded.txt '{"statusLavatric' 16</code></li>
   <br>
   <li>the output should now contain a key of length 16 and a JSON like the bellow example:<br>
-      <code>Plaintext: {
+      <pre><code>Plaintext: {
         "statusLavatrice":{
                 "WiFiStatus":"0",
                 "Err":"255",
@@ -40,7 +40,8 @@ For most reliable responses, getting the key should be done while the machine is
                 "RecipeId":"0",
                 "CheckUpState":"0"
         }
-  }</code></li>
+  }</code></pre></li>
   <br>
-  <li>If you dont not have a full key at this stage repeat
+  <li>If you dont not have a full key at this stage repeat step 3 using another JSON key value like 'WiFiStatus' until each character of the key is known.</li>
+  <br>Add your KEY and DEVICE_IP to candy.py 
 </ol>
