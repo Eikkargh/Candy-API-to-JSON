@@ -14,7 +14,7 @@ For most reliable responses, getting the key should be done while the machine is
   <li>Feed the coded.txt into xorknown.py using:<br>
       <code>./xorknown.py ./coded.txt '{"statusLavatric' 16</code></li>
   <br>
-  <li>the output should now contain a key of length 16 and a JSON. See the bellow example:<br>
+  <li>the output should now contain a key of length 16 and a JSON. An example decoded JSON:<br>
       <pre><code>Plaintext: {
         "statusLavatrice":{
                 "WiFiStatus":"0",
