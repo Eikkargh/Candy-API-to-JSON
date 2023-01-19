@@ -53,7 +53,7 @@ For most reliable responses, getting the key should be done while the machine is
 <br><br>
 <h2>Configuring Home Assistant</h2>
 candy.py gets the data, decodes it and strips down the the JSON to meet Home Assistants 255 character limit on sensors.<br>
-To set up in Home Assistant you can use the template:<br>
+To set up in Home Assistant you can use the sensor:<br>
 <pre><code>
 - platform: command_line
     name: 'Candy Washer Dryer'
