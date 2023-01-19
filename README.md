@@ -1,6 +1,10 @@
 # Candy-API-to-JSON
 
-This python script is designed to communicate with Candy/Hoover washer dryers to produce a JSON readable by Home Assistant.
+This python script is designed to communicate with Candy/Hoover washer dryers to produce a JSON readable by Home Assistant.<br>
+Tested and working on:
+<ul>
+  <li>Hoover WDWOA596H WIFI Washer Dryer</li>
+</ul>
 
 <h2>Getting the API Key</h2>
 To obtain the key for the machine I used: <a href=https://github.com/Alamot/code-snippets/blob/master/crypto/xorknown.py>xorknown.py</a> from: <a href=https://github.com/Alamot>@Alamot.</a>
