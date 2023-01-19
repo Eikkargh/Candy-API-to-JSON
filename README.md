@@ -3,7 +3,7 @@
 This python script is designed to communicate with Candy/Hoover washer dryers to produce a JSON readable by Home Assistant.
 
 <h2>Getting the API Key</h2>
-To obtain the key for the machine I used: <a href=https://github.com/Alamot/code-snippets/blob/master/crypto/xorknown.py>xorknown.py</a> from: <a href=https://github.com/Alamot>@Alamot</a>
+To obtain the key for the machine I used: <a href=https://github.com/Alamot/code-snippets/blob/master/crypto/xorknown.py>xorknown.py</a> from: <a href=https://github.com/Alamot>@Alamot.</a>
 For most reliable responses, getting the key should be done while the machine is running a program. 
 <br><br>
 <ol>
