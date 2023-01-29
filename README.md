@@ -75,3 +75,4 @@ To set up in Home Assistant you can use the sensor:<br>
       - TotalTime
 </pre></code>
 example templates including translations of machine program codes can be found in configuration.yaml.
+example cards can be found in lovelace.yaml.
