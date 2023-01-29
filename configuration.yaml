@@ -1,6 +1,7 @@
 sensor:
-#Other sensors
-
+###################
+## Other Sensors ##
+###################
   - platform: command_line
     name: 'Candy Washer Dryer'
     scan_interval: 60
@@ -22,12 +23,15 @@ sensor:
 
 
 template:
-#Other templates
+#####################
+## Other Templates ##
+#####################
+#   Washer Dryer
   - sensor:
       - name: 'Washer/Dryer - WiFi'
         icon: mdi:washing-machine
         state: >
-          {% set WiFi = state_attr('sensor.candy_washer_dryer', 'WiFiStatus') %}
+          {% set WiFi = state_attr('sensor.candy_washer_dryer', 'WiFiStatus') | default(1) %}
           {% if WiFi == '0' %}On
           {% elif WiFi == '1' %}Off
           {% else %}{{ WiFi }}
@@ -36,7 +40,7 @@ template:
       - name: 'Washer/Dryer - Error'
         icon: mdi:alert-circle
         state: >
-          {% set Error = state_attr('sensor.candy_washer_dryer', 'Err') %}
+          {% set Error = state_attr('sensor.candy_washer_dryer', 'Err') | default(255) %}
           {% if Error == '255' %}No Errors
           {% elif Error is number %}{{ Error }}
           {% else %}None
@@ -70,6 +74,7 @@ template:
           {% elif Prog == "12" %}Dry Low
           {% elif Prog == "13" %}Dry High
           {% elif Prog == "17" %}Hygeine
+          {% elif Prog == None %}Off
           {% else %}{{ Prog }}
           {% endif %}
   - sensor:
@@ -88,6 +93,7 @@ template:
           {% elif Phase == "8" %}Steam
           {% elif Phase == "9" %}Goodnight
           {% elif Phase == "10" %}Spin
+          {% elif Phase == None %}None
           {% else %}{{ Phase }}
           {% endif %}
   - sensor:
@@ -123,10 +129,11 @@ template:
       - name: 'Washer/Dryer - Dry Time'
         icon: mdi:clock-time-four
         state: >
-          {% set Dry = state_attr('sensor.candy_washer_dryer', 'DryT') %}
+          {% set DryT = state_attr('sensor.candy_washer_dryer', 'DryT') %}
           {% if DryT == None %}Off
           {% elif DryT == "0" %}Dry Off
           {% elif DryT == "3" %}Iron Dry
+          {% elif DryT == "4" %}Dry Finished
           {% elif DryT == "5" %}Dry Ending
           {% else %}{{ DryT }}
           {% endif %}
@@ -144,7 +151,7 @@ template:
         icon: mdi:timer
         state: >
           {% set TotalT = state_attr('sensor.candy_washer_dryer', 'TotalTime') %}
-          {% if TotalT == None %}Off
+          {% if TotalT == None %}0
           {% else %}{{ TotalT }}
           {% endif %}
   - sensor:
@@ -153,7 +160,10 @@ template:
         state: >
           {% set Total = states('sensor.washer_dryer_total_time') %}
           {% set Max = states('sensor.washer_dryer_max_time') %}
-          {% if (Total | int(default=0)) == 0 %}0 
-          {% elif Total > Max %}{{ Total }}
-          {% else %}{{ Max }}
+          {% if is_number( Max ) %}
+            {% if Total == 0 %}0 
+            {% elif Total > Max %}{{ Total }}
+            {% else %}{{ Max }}
+            {% endif %}
+          {% else %}0
           {% endif %}
