@@ -1,0 +1,79 @@
+# Example conditional list of entities
+type: conditional
+conditions:
+  - entity: sensor.washer_dryer_wifi
+    state: 'On'
+card:
+  type: entities
+  entities:
+    - entity: sensor.washer_dryer_status
+      name: Status
+    - entity: sensor.washer_dryer_program
+      name: Program
+    - entity: sensor.washer_dryer_phase
+      name: Phase
+    - entity: sensor.washer_dryer_wash_temp
+      name: Wash Temp
+    - entity: sensor.washer_dryer_spin_speed
+      name: Spin Speed
+    - entity: sensor.washer_dryer_dry_time
+      name: Dry Setting
+    - entity: sensor.washer_dryer_wash_time
+      name: Cycle Time
+    - entity: sensor.washer_dryer_delay_time
+      name: Delay Time
+    - entity: sensor.washer_dryer_total_time
+      name: Total Time
+    - entity: sensor.washer_dryer_error
+      name: Error
+  title: Washer Dryer
+  style: |
+    ha-card {
+      border-radius: 30px;
+    }
+    :host {
+      padding-top: 0;
+    }
+
+# Example progress bar
+type: custom:config-template-card
+variables:
+  - states['sensor.washer_dryer_max_time'].state
+  - states['sensor.washer_dryer_delay_time'].state
+  - states['sensor.washer_dryer_wash_time'].state
+  - states['sensor.washer_dryer_dry_time'].state
+entities:
+  - sensor.washer_dryer_max_time
+  - sensor.washer_dryer_total_time
+  - sensor.washer_dryer_delay_time
+  - sensor.washer_dryer_wash_time
+  - sensor.washer_dryer_dry_time
+card:
+  type: custom:bar-card
+  entities:
+    - entity: sensor.washer_dryer_total_time
+      name: |-
+        "${vars[1] > 0 ? 'Washer/Dryer - Delayed'
+         : vars[2] > 0 ? 'Washer/Dryer - Washing' 
+         : vars[3] > 0 ? 'Washer/Dryer - Drying' 
+         : 'Washer/Dryer - Finished';}"
+      unit_of_measurement: mins
+      min: '0'
+      max: ${+vars[0]}
+      icon: mdi:washing-machine
+      positions:
+        indicator: 'off'
+  style: |
+    ha-card {
+      border-radius: 15px;
+    }
+    bar-card-backgroundbar {
+      --bar-color: #000000 !important;
+    }
+    bar-card-currentbar {
+      --bar-color: {{ 
+        '#7634c7' if (states('sensor.washer_dryer_delay_time') > 0) else
+        '#34acc7' if (states('sensor.washer_dryer_wash_time') > 0) else
+        '#c77634' if (states('sensor.washer_dryer_dry_time') > 0) else
+        '#a32e2e' }} !important;
+    }
