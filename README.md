@@ -46,7 +46,7 @@ For most reliable responses, getting the key should be done while the machine is
         }
   }</code></pre></li>
   <br>
-  <li>If you dont not have a full key at this stage repeat step 3 using another JSON key value like 'WiFiStatus' until each character of the key is known.</li>
+  <li>If you do not have a full key at this stage repeat step 3 using another JSON key value like 'WiFiStatus' until each character of the key is known.</li>
   <br>
   <li>Add your KEY and DEVICE_IP to candy.py and place in your Home Assistant config/pyscripts.</li>
 </ol>
