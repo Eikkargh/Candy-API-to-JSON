@@ -76,8 +76,6 @@ entities:
         name: Cycle Time
       - entity: sensor.washer_dryer_delay_time
         name: Delay Time
-      - entity: sensor.washer_dryer_total_time
-        name: Total Time
       - entity: sensor.washer_dryer_error
         name: Error
     style: |
