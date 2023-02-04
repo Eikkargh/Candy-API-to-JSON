@@ -74,5 +74,7 @@ To set up in Home Assistant you can use the sensor:<br>
       - DelVal
       - TotalTime
 </pre></code>
-example templates including translations of machine program codes can be found in configuration.yaml. <br>
-example cards can be found in lovelace.yaml. These use custom:card-mod, custom:fold-entity-row and custom:config-template-card integrations.
+<ul><li>example templates including translations of machine program codes can be found in configuration.yaml. </li>
+    <li>example cards can be found in lovelace.yaml. These use custom:card-mod, custom:fold-entity-row and custom:config-template-card integrations.</li>
+</ul>
+
