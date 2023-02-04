@@ -43,7 +43,7 @@ template:
           {% set Error = state_attr('sensor.candy_washer_dryer', 'Err') | default(255) %}
           {% if Error == '255' %}No Errors
           {% elif Error is number %}{{ Error }}
-          {% else %}None
+          {% else %}Off
           {% endif %}
   - sensor:
       - name: 'Washer/Dryer - Status'
@@ -93,7 +93,7 @@ template:
           {% elif Phase == "8" %}Steam
           {% elif Phase == "9" %}Goodnight
           {% elif Phase == "10" %}Spin
-          {% elif Phase == None %}None
+          {% elif Phase == None %}Off
           {% else %}{{ Phase }}
           {% endif %}
   - sensor:
@@ -102,8 +102,8 @@ template:
         unit_of_measurement: '°C'
         state: >
           {% set Temp = state_attr('sensor.candy_washer_dryer', 'Temp') %}
-          {% if Temp == None %}None
-          {% elif Temp == "0" %}Off
+          {% if Temp == None %}0
+          {% elif Temp == "0" %}0
           {% else %}{{ Temp }}
           {% endif %} 
   - sensor:
@@ -112,8 +112,8 @@ template:
         unit_of_measurement: rpm
         state: >
           {% set Spin = state_attr('sensor.candy_washer_dryer', 'SpinSp') %}
-          {% if Spin == None %}None
-          {% elif  Spin == "0" %}Off
+          {% if Spin == None %}0
+          {% elif  Spin == "0" %}0
           {% else %}{{ (Spin | int) * 100  }}
           {% endif %}
   - sensor:
@@ -155,15 +155,28 @@ template:
           {% else %}{{ TotalT }}
           {% endif %}
   - sensor:
+      - name: 'Washer/Dryer - Max Delay'
+        icon: mdi:timer
+        state: >
+          {% set Status = states('sensor.washer_dryer_wifi') %}
+          {% set Delay = states('sensor.washer_dryer_delay_time') | int(default=0) * 60 %}
+          {% set DelayMax = states('sensor.washer_dryer_max_delay') | int(default=0) %}
+          {% set Total = states('sensor.washer_dryer_total_time') | int %}
+          {% if Total == 0 %}0
+          {% elif Status == 'Off' %}{{ DelayMax }}
+          {% elif DelayMax >= Delay %}{{ DelayMax }}
+          {% else %}{{ Delay }}
+          {% endif %}              
+  - sensor:
       - name: 'Washer/Dryer - Max Time'
         icon: mdi:timer
         state: >
-          {% set Total = states('sensor.washer_dryer_total_time') %}
-          {% set Max = states('sensor.washer_dryer_max_time') %}
-          {% if is_number( Max ) %}
-            {% if Total == 0 %}0 
-            {% elif Total > Max %}{{ Total }}
-            {% else %}{{ Max }}
-            {% endif %}
-          {% else %}0
+          {% set Status = states('sensor.washer_dryer_wifi') %}
+          {% set Total = states('sensor.washer_dryer_total_time') | int(default=0) %}
+          {% set TMax = states('sensor.washer_dryer_max_time') | int(default=0) %}
+          {% set DelayMax = states('sensor.washer_dryer_delay_max') | int(default=0) %}
+          {% if Total == 0 %}0
+          {% elif Status == 'Off' %}{{ TMax }}
+          {% elif Total <= (TMax - DelayMax) %}{{ TMax }}
+          {% else %}{{ Total }}
           {% endif %}
