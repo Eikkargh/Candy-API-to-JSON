@@ -12,7 +12,7 @@ For most reliable responses, getting the key should be done while the machine is
 <br><br>
 <ol>
   <li>In a terminal run the command:<br>
-      <code>curl -s http://<CANDY_IP>/http-read.json?encrypted=1 | xxd -r -p > ./coded.txt</code><br>
+      <code>curl -s http://CANDY_IP/http-read.json?encrypted=1 | xxd -r -p > ./coded.txt</code><br>
       This gets the raw hex data from the machines API and converts to plaintext. </li>
   <br>
   <li>Feed the coded.txt into xorknown.py using:<br>
