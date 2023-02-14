@@ -3,13 +3,14 @@ import requests
 import json
 import time
 
-url = 'http://<DEVICE_IP>/http-read.json?encrypted=1'
-key = '<KEY>'
+url = 'http://192.168.1.24/http-read.json?encrypted=1'
+key = 'fhaihbiklhjdlmga'
 request_timeout = 10
-tries = 0
-retries = 5
-candy = {}
+retries = 3
+retry_delay = 2
 candyOff = {'WiFiStatus':'1', 'Err':None, 'MachMd':None, 'Pr':None, 'PrPh':None, 'Temp':None, 'SpinSp':None, 'RemTime':'0', 'DryT':'0', 'DelVal':0, 'TotalTime':'0'}
+tries = 0
+candy = {}
 
 #extract data
 def fetchHex(xurl, xrequest_timeout):
@@ -43,7 +44,6 @@ def decode(xkey):
 while tries < retries:
     decoded = decode(key)
     if decoded != None:
-        candyJson = json.dumps(candyOff, indent = 4)
         decodedDict = json.loads(decoded)
         candyData = decodedDict.get('statusLavatrice')
         for k, v in candyData.items():
@@ -57,7 +57,8 @@ while tries < retries:
         candyJson = json.dumps(candy, indent = 4)
         break
     tries += 1
-    time.sleep(2)
+    time.sleep(retry_delay)
 if tries == retries:
     candyJson = json.dumps(candyOff, indent = 4)
 print(candyJson)
+
