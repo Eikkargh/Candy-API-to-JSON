@@ -1,25 +1,26 @@
-sensor:
+command_line:
 ###################
 ## Other Sensors ##
 ###################
-  - platform: command_line
-    name: 'Candy Washer Dryer'
-    scan_interval: 60
-    command_timeout: 30
-    command: python3 ./pyscript/candy.py
-    value_template: '{{ value_json }}'
-    json_attributes:
-      - WiFiStatus
-      - Err
-      - MachMd
-      - Pr
-      - PrPh
-      - Temp
-      - SpinSp
-      - RemTime
-      - DryT
-      - DelVal
-      - TotalTime
+  - sensor:
+      name: 'Candy Washer Dryer'
+      unique_id: candy_washer_dryer
+      scan_interval: 60
+      command_timeout: 30
+      command: python3 ./pyscript/candy.py
+      value_template: '{{ value_json }}'
+      json_attributes:
+        - WiFiStatus
+        - Err
+        - MachMd
+        - Pr
+        - PrPh
+        - Temp
+        - SpinSp
+        - RemTime
+        - DryT
+        - DelVal
+        - TotalTime
 
 
 template:
