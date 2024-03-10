@@ -37,28 +37,29 @@ entities:
                    : '#a32e2e'}"
                 from: 0
                 to: 2000
-        style: |
-          ha-card {
-            border-radius: 30px;
-            --paper-item-icon-color: {{
-              '#7634c7' if (states('sensor.washer_dryer_delay_time') | int > 0) else
-              '#c77634' if (states('sensor.washer_dryer_dry_time') != 'Dry Off') else
-              '#2F5A9E' if (states('sensor.washer_dryer_wash_time') | int > 0) else
-              '#a32e2e' }};
-          }
-          .card-content {
-            padding: 5px !important;
-          }
-          bar-card-background {
-            margin: 0px 6px 0px 6px !important;
-            border-radius: 30px;
-          }
-          bar-card-backgroundbar {
-            --bar-color: '#000000' !important;
-          }
-          bar-card-currentbar {
-            border-radius: 30px
-          }
+        card_mod:
+          style: |
+            ha-card {
+              border-radius: 30px;
+              --paper-item-icon-color: {{
+                '#7634c7' if (states('sensor.washer_dryer_delay_time') | int > 0) else
+                '#c77634' if (states('sensor.washer_dryer_dry_time') != 'Dry Off') else
+                '#2F5A9E' if (states('sensor.washer_dryer_wash_time') | int > 0) else
+                '#a32e2e' }};
+            }
+            .card-content {
+              padding: 5px !important;
+            }
+            bar-card-background {
+              margin: 0px 6px 0px 6px !important;
+              border-radius: 30px;
+            }
+            bar-card-backgroundbar {
+              --bar-color: '#000000' !important;
+            }
+            bar-card-currentbar {
+              border-radius: 30px
+            }
     entities:
       - entity: sensor.washer_dryer_status
         name: Status
@@ -78,19 +79,22 @@ entities:
         name: Delay Time
       - entity: sensor.washer_dryer_error
         name: Error
-    style: |
-      #items {
-        padding: 0px 20px 0px 10px !important;
-      }
-      ha-icon {
-        margin: 4px !important;
-style: |
-  .card-content {
-    padding: 5px !important;
-  }
-  ha-card {
-    border-radius: 30px;
-  }
-  #states > div {
-    margin: 0px 0px !important;
-  }
+    card_mod:    
+      style: |
+        #items {
+          padding: 0px 20px 0px 10px !important;
+        }
+        ha-icon {
+          margin: 4px !important;
+        }
+card_mod:
+  style: |
+    .card-content {
+      padding: 5px !important;
+    }
+    ha-card {
+      border-radius: 30px;
+    }
+    #states > div {
+      margin: 0px 0px !important;
+    }
