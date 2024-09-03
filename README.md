@@ -4,6 +4,7 @@ This python script is designed to communicate with Candy/Hoover washer dryers to
 Tested and working on:
 <ul>
   <li>Hoover WDWOA596H WIFI Washer Dryer</li>
+  <li>Hoover H3DS4965TACBE-80 Washer Dryer</li>
 </ul>
 
 <h2>Getting the API Key</h2>
