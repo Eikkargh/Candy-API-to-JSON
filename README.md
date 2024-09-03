@@ -56,24 +56,25 @@ For most reliable responses, getting the key should be done while the machine is
 candy.py gets the data, decodes it and strips down the JSON to meet Home Assistants 255 character limit on sensors.<br>
 To set up in Home Assistant you can use the sensor:<br>
 <pre><code>
-- platform: command_line
-    name: 'Candy Washer Dryer'
-    scan_interval: 60
-    command_timeout: 30
-    command: python3 ./pyscript/candy.py
-    value_template: '{{ value_json }}'
-    json_attributes:
-      - WiFiStatus
-      - Err
-      - MachMd
-      - Pr
-      - PrPh
-      - Temp
-      - SpinSp
-      - RemTime
-      - DryT
-      - DelVal
-      - TotalTime
+command_line:
+  - sensor:
+      name: 'Candy Washer Dryer'
+      scan_interval: 60
+      command_timeout: 30
+      command: python3 ./pyscript/candy.py
+      value_template: '{{ value_json }}'
+      json_attributes:
+        - WiFiStatus
+        - Err
+        - MachMd
+        - Pr
+        - PrPh
+        - Temp
+        - SpinSp
+        - RemTime
+        - DryT
+        - DelVal
+        - TotalTime
 </pre></code>
 <img src=https://user-images.githubusercontent.com/87714048/216792725-cd230740-77ca-4f6e-9c5c-08257d17a7e0.png alt="candy-card">
 
