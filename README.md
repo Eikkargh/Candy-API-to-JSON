@@ -77,6 +77,6 @@ To set up in Home Assistant you can use the sensor:<br>
 <img src=https://user-images.githubusercontent.com/87714048/216792725-cd230740-77ca-4f6e-9c5c-08257d17a7e0.png alt="candy-card">
 
 <ul><li>example templates including translations of machine program codes can be found in configuration.yaml. </li>
-    <li>example cards can be found in lovelace.yaml. These use custom:card-mod, custom:fold-entity-row and custom:config-template-card integrations.</li>
+    <li>example cards can be found in lovelace.yaml. These use <a href="https://github.com/thomasloven/lovelace-card-mod">custom:card-mod</a>, <a href="https://github.com/thomasloven/lovelace-fold-entity-row">custom:fold-entity-row</a> and <a href="https://github.com/iantrich/config-template-card">custom:config-template-card</a> integrations.</li>
 </ul>
 
