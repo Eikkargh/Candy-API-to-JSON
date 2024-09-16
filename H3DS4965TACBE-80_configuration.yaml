@@ -13,7 +13,7 @@ command_line:
         - WiFiStatus
         - Err
         - MachMd
-        - Pr
+        - PrNm
         - PrPh
         - Temp
         - SpinSp
@@ -42,7 +42,7 @@ template:
         icon: mdi:alert-circle
         state: >
           {% set Error = state_attr('sensor.candy_washer_dryer', 'Err') | default(255) %}
-          {% if Error == '255' %}No Errors
+          {% if Error == '0' %}No Errors
           {% elif Error is number %}{{ Error }}
           {% else %}Off
           {% endif %}
@@ -64,7 +64,7 @@ template:
       - name: 'Washer/Dryer - Program'
         icon: mdi:progress-star
         state: >
-          {% set Prog = state_attr('sensor.candy_washer_dryer', 'Pr') %}
+          {% set Prog = state_attr('sensor.candy_washer_dryer', 'PrNm') %}
           {% if Prog == "2" %}Cotton
           {% elif Prog == "3" %}Eco 40-60
           {% elif Prog == "4" %}Cotton & Prewash
