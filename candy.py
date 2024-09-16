@@ -51,7 +51,6 @@ while tries < retries:
                 if k == 'DelVal' and candyData[k] == '255':
                     candy['DelVal'] = '0'
                 else:
-                    if k == 'PrNm': k == 'Pr'
                     candy[k] = candyData[k]
         TotalTime = int(candy['DelVal']) * 60 + int(candy['RemTime'])
         candy['TotalTime'] = str(TotalTime)
