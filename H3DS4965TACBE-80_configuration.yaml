@@ -124,7 +124,7 @@ template:
         state: >
           {% set WashT = state_attr('sensor.candy_washer_dryer', 'RemTime') %}
           {% if WashT == None %}0
-          {% else %}{{ WashT | int }}
+          {% else %}{{ (WashT | int) / 60 | round(2) }}
           {% endif %}
   - sensor:
       - name: 'Washer/Dryer - Dry Time'
@@ -153,7 +153,7 @@ template:
         state: >
           {% set TotalT = state_attr('sensor.candy_washer_dryer', 'TotalTime') %}
           {% if TotalT == None %}0
-          {% else %}{{ TotalT }}
+          {% else %}{{ (TotalT | int) / 60 | round(2) }}
           {% endif %}
   - sensor:
       - name: 'Washer/Dryer - Max Delay'
