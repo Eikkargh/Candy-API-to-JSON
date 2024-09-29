@@ -47,7 +47,7 @@ while tries < retries:
         decodedDict = json.loads(decoded)
         candyData = decodedDict.get('statusLavatrice')
         for k, v in candyData.items():
-            if k[0:3] != "Opt" and k[0:3] != "Rec" and k[0:3] != "Ste" and k[0:3] != "SLe" and k[0:3] != "Che" and k[0:3] != "PrC" and k[0:3] != "Lan" and k[0:3] != "Fil" and k[0:3] != "Det" and k[0:3] != "Sof" and k[0:3] != "DPr" and k[0:3] != "SPr" and k[0:3] != "Wat" and k[0:3] != "rED":
+            if k[0:3] != "Opt" and k[0:3] != "Rec" and k[0:3] != "Ste" and k[0:3] != "SLe" and k[0:3] != "Che" and k[0:3] != "Lan" and k[0:3] != "Fil" and k[0:3] != "Det" and k[0:3] != "Sof" and k[0:3] != "DPr" and k[0:3] != "SPr" and k[0:3] != "Wat" and k[0:3] != "rED":
                 if k == 'DelVal' and candyData[k] == '255':
                     candy['DelVal'] = '0'
                 else:
