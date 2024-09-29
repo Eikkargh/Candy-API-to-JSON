@@ -65,11 +65,17 @@ template:
         icon: mdi:progress-star
         state: >
           {% set Prog = state_attr('sensor.candy_washer_dryer', 'PrNm') %}
+          {% set ProgC = state_attr('sensor.candy_washer_dryer', 'PrCode') %}
           {% if Prog == "2" %}Cotton
           {% elif Prog == "3" %}Eco 40-60
           {% elif Prog == "4" %}Cotton & Prewash
           {% elif Prog == "9" %}Wool & Soft Care
-          {% elif Prog == "10" %}Rapid 14'/30'/44'
+          {% elif Prog == "10" %}
+            {% if ProgC == "103" %}Rapid 14'
+            {% elif ProgC == "71" %}Rapid 30'
+            {% elif ProgC == "39" %}Rapid 44'
+            {% elif ProgC == "65" %}WiFi Command
+            {% else %}{{ ProgC }}
           {% elif Prog == "11" %}All in One 59'
           {% elif Prog == "12" %}Extra Care
           {% elif Prog == "13" %}Dry (Wool)
