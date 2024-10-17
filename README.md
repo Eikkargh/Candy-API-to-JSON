@@ -76,6 +76,7 @@ command_line:
         - DelVal
         - TotalTime
 </pre></code>
+This may be different on some machines. Yaml exmaples for test machines are above. If your machine is not listed please raise an issue with a copy of your decoded output. <br>
 <img src=https://user-images.githubusercontent.com/87714048/216792725-cd230740-77ca-4f6e-9c5c-08257d17a7e0.png alt="candy-card">
 
 <ul><li>example templates including translations of machine program codes can be found in configuration.yaml. </li>
