@@ -15,6 +15,7 @@ command_line:
         - MachMd
         - PrNm
         - PrPh
+        - PrCode
         - Temp
         - SpinSp
         - RemTime
