@@ -133,10 +133,15 @@ template:
           {% set DryT = state_attr('sensor.candy_washer_dryer', 'DryT') %}
           {% if DryT == None %}Off
           {% elif DryT == "0" %}Dry Off
-          {% elif DryT == "3" %}Iron Dry
-          {% elif DryT == "4" %}Dry Finished
-          {% elif DryT == "5" %}Dry Ending
-          {% else %}{{ DryT }}
+          {% elif DryT == "1" %}Extra Dry 
+          {% elif DryT == "2" %}Iron Dry
+          {% elif DryT == "3" %}Cupboard Dry
+          {% elif DryT == "5" %}120'
+          {% elif DryT == "6" %}90'
+          {% elif DryT == "7" %}60'
+          {% elif DryT == "8" %}30'
+          {% elif DryT == "9" %}Wool Dry
+          {% else %}{{ DryT | int // 60 }}
           {% endif %}
   - sensor:
       - name: 'Washer/Dryer - Delay Time'
