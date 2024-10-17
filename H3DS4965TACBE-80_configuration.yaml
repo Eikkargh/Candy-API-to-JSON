@@ -71,11 +71,12 @@ template:
           {% elif Prog == "4" %}Cotton & Prewash
           {% elif Prog == "9" %}Wool & Soft Care
           {% elif Prog == "10" %}
-            {% if ProgC == "103" %}Rapid 14'
+            {% if ProgC == "39" %}Rapid 14'
             {% elif ProgC == "71" %}Rapid 30'
-            {% elif ProgC == "39" %}Rapid 44'
-            {% elif ProgC == "65" %}WiFi Command
+            {% elif ProgC == "103" %}Rapid 44'
+            {% elif ProgC == "65" %}Wifi Command
             {% else %}{{ ProgC }}
+            {% endif %}
           {% elif Prog == "11" %}All in One 59'
           {% elif Prog == "12" %}Extra Care
           {% elif Prog == "13" %}Dry (Wool)
