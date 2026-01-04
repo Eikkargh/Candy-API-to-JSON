@@ -11,6 +11,11 @@ Tested and working on:
 To obtain the key for the machine I used: <a href=https://github.com/Alamot/code-snippets/blob/master/crypto/xorknown.py>xorknown.py</a> from: <a href=https://github.com/Alamot>@Alamot.</a>
 For most reliable responses, getting the key should be done while the machine is running a program. 
 <br><br>
+<h3>Recommended Method</h3>
+Using the <a href=https://github.com/MelvinGr/CandySimplyFi-tool>CandySimplyFi-tool</a> from: <a href=https://github.com/MelvinGr/>@MelvinGr.</a>
+Follow the instructions there to get the key for your machine.
+<br><br>
+<h3>Old Method</h3>
 <ol>
   <li>In a terminal run the command:<br>
       <code>curl -s http://CANDY_IP/http-read.json?encrypted=1 | xxd -r -p > ./coded.txt</code><br>
